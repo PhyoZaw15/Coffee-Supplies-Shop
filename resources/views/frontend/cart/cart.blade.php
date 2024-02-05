@@ -36,6 +36,7 @@
                                 @foreach($userCart as $item)
                                     <tr>
                                         @php
+                                            $discount_percentage = 0;
                                             $subcriber = isSubscriber($user->id, $item['product_id']);
                                             if($subcriber['status'] == true) {
                                                 $discount_percentage = $subcriber['discount_percentage'];

@@ -14,17 +14,6 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          @can('dashboard')
-          <li class="nav-item">
-            <a href="{{ url('admin/dashboard') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
-          @endcan
-
           @can('master-data-list')
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
