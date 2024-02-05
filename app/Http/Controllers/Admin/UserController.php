@@ -72,7 +72,25 @@ class UserController extends Controller
 
     public function subscriber()
     {
-        $subscribers = Subscription::with('user')->get();
-        return view('admin.users.subscriber', compact('subscribers'));
+        $users = User::has('subscriptions')->get();
+        return view('admin.users.subscriber', compact('users'));
+    }
+
+    public function subscriberDetails($id)
+    {
+        // $subscriber = Subscription::with(['user', 'products'])->where('user_id', $id)->latest()->get();
+        $subscriber = \DB::select("
+                        SELECT 
+                            products.name as productName,
+                            users.name as username, 
+                            users.email as userEmail,
+                            subscriptions.*
+                        FROM subscriptions
+                        JOIN users ON subscriptions.user_id = users.id
+                        JOIN products ON subscriptions.product_id = products.id
+                        WHERE users.id = ?
+                    ", [$id]);
+        // return $subscriber;
+        return view('admin.users.subscriberDetails', compact('subscriber'));
     }
 }

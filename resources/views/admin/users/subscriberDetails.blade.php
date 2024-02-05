@@ -7,11 +7,11 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-12">
-              @can('user-create')
+              @can('brand-create')
               <ol class="breadcrumb float-sm-right">
-                {{-- <li class="breadcrumb-item">
-                  <a href="{{ route('users.create') }}" class="btn btn-success btn-xs float-right"><i class="fa fa-plus"></i> Add New</a>
-                </li> --}}
+                <li class="breadcrumb-item">
+                  <a href="{{ url('admin/subscribers') }}" class="btn btn-success btn-xs float-right"><i class="fa fa-reply"></i> Back</a>
+                </li>
               </ol>
             @endcan
             </div>
@@ -28,31 +28,32 @@
         <div class="col-lg-12">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                  <h3 class="card-title">Subscribers are the following:</h3>
+                    <h3>Subscriber Details Information</h3>
+                    <h6><b>Username: {{ $subscriber[0]->username }}</b></h6>
+                    <h6><b>Email: {{ $subscriber[0]->userEmail }}</b></h6>
                 </div>
                 <!-- /.card-header -->
+                
                 <div class="card-body">
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
                       <th>No</th>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Actions</th>
+                      <th>Product Name</th>
+                      <th>Subscription Type</th>
+                      <th>Subscribed Date</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @php
-                            $index = 1;
-                        @endphp
-                    @foreach($users as $data)
+                    @php
+                        $index = 1;
+                    @endphp
+                    @foreach($subscriber as $data)
                       <tr>
                         <td>{{ $index++ }}</td>
-                        <td>{{ $data->name }}</td>
-                        <td>{{ $data->email }}</td>
-                        <td>
-                          <a  href="{{ url('admin/subscribers/'.$data->id.'/show') }}"><i class="fa fa-eye"></i> </a> &nbsp;
-                        </td>
+                        <td>{{ $data->productName }}</td>
+                        <td>{{ $data->subscription_type }}</td>
+                        <td>{{ $data->created_at }}</td>
                       </tr>
                     @endforeach
                     </tbody>

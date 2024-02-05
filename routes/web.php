@@ -71,6 +71,7 @@ Route::group(['middleware' => 'auth'], function(){
 
         // Subscribers
         Route::get('subscribers', 'UserController@subscriber');
+        Route::get('subscribers/{id}/show', 'UserController@subscriberDetails');
 
     });
 

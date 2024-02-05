@@ -122,14 +122,14 @@
               </li>
               @endcan
 
-              @can('permission-list')
+              {{-- @can('permission-list')
               <li class="nav-item">
                 <a href="{{ url('admin/permissions') }}" class="nav-link">
                   <i class="fas fa-gavel nav-icon"></i>
                   <p>Permissions</p>
                 </a>
               </li>
-              @endcan
+              @endcan --}}
             </ul>
           </li>
           @endcan
